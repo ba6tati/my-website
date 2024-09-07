@@ -1,4 +1,12 @@
 {% extends 'account/account.html' %}
 
+{% block content %}
+
 {% block username %}{{ user.username }}{% endblock %}
 {% block email %}{{ user.email }}{% endblock %}
+
+<form method="post" action="user_auth:logout">
+    <button type="submit">Logout</button>
+</form>
+
+{% endblock %}

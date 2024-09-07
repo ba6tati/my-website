@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <ul>
+    {% for app in latest_apps %}
+        <li>{{ app.name }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
