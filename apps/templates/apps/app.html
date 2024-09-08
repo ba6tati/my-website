@@ -2,4 +2,40 @@
 
 {% block content %}
     <h1>{{ app.name }}</h1>
+    <h3>{{ app.version }}</h3>
+    {% if app.tags %}
+        <h5>{{ app.tags }}</h5>
+    {% endif %}
+    <hr>
+    <p>{{ app.description }}</p>
+    <hr>
+    {% if is_authenticated %}
+    <form method="post" action="{% url 'apps:post_comment' %}">
+        {% csrf_token %}
+        <input type="hidden" name="app_pk" value="{{ app.pk }}">
+
+        {{ comment_form.as_p }}
+
+        {% if comment_form.errors %}
+            <div class="errorlist">
+                {% for field in comment_form %}
+                    {% for error in field.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <button type="submit">Post</button>
+    </form>
+    {% else %}
+    <h4>Login to post comments</h4>
+    {% endif %}
+
+    {% for comment in comments %}
+        <a href="{% url 'accounts:account' comment.user.username %}">{{ comment.user.username }}</a>
+        <p>{{ comment.text }}</p>
+        <h5>{% if comment.likes.all.count > 0 %}{{ comment.likes.all.count }}{% else %}0{% endif %} likes | {{ comment.publish_datetime }}</h5>
+    {% endfor %}
+
 {% endblock %}

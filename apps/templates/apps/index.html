@@ -3,7 +3,7 @@
 {% block content %}
     <ul>
     {% for app in latest_apps %}
-        <li>{{ app.name }}</li>
+        <li><a href="{% url 'apps:app' app.pk %}">{{ app.name }}</a></li>
     {% endfor %}
     </ul>
 {% endblock %}

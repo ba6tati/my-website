@@ -21,7 +21,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'user_auth.User'
-LOGIN_REDIRECT_URL = 'core.home'
+LOGIN_REDIRECT_URL = 'core:home'
 
 # Application definition
 

@@ -5,6 +5,15 @@
     <title>Ba6taTi's Website</title>
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'core:home' %}"> Home </a></li>
+            <li><a href="{% url 'apps:apps' %}"> Apps </a></li>
+            <li><a href="{% url 'admin:index' %}">Admin</a></li>
+            <li><a href="{% url 'auth:login' %}">Login</a></li>
+            <li><a href="{% url 'auth:logout' %}">Logout</a></li>
+        </ul>
+    </nav>
     {% block content %}
         
     {% endblock %}
